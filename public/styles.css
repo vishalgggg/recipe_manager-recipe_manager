@@ -1,0 +1,179 @@
+body {
+    
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #8bbe82;
+}
+
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav ul li {
+    margin-right: 20px;
+}
+
+header nav a {
+    color: #fff;
+    text-decoration: none;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+section {
+    background-color: #fff;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+#recipes-container,#collections-container ,#search-results,#renderedRecipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+h3{
+    text-align: center;
+}
+.recipe {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 25%;
+    text-align: center;
+    background-color: rgb(160, 177, 160);
+}
+
+.recipe img {
+    max-width: 100%;
+    min-width: 80%;
+    height: 200px;
+    text-align: center;
+}
+.recipe p{
+    color: rgb(54, 86, 37);
+    text-align: left;
+}
+.recipe h2{
+    color: #ebf2f8;
+    background-color: cadetblue;
+}
+.recipe h4{
+    text-align: center;
+}
+ul {
+    font-size: 15px;
+    font-family: Calibri, sans-serif;
+    font-weight: normal;
+    text-align: start;
+}
+
+form{
+    margin-left: 25%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(166, 175, 157);
+    border-radius: 10px;
+    width: 50%;
+}
+input{
+    width: 50%;
+    padding: 5px;
+    border-radius: 10px;
+    align-self: center;
+}
+button{
+    background-color: #3b28e1;
+    padding: 5px;
+    width: 20%;
+    align-self: center;
+    cursor: pointer;
+    border-radius: 10px;
+    color: wheat;
+    min-height: 35px;
+}
+button:hover{
+    background-color: rgb(4, 19, 55);
+}
+p,h1{
+    text-align: center;
+}
+.rp{
+    padding: 10px;
+    background-color: #7b5b5b;
+    color: wheat;
+    display: inline-block; 
+}
+.stars {
+    display: flex;
+}
+
+.star {
+    font-size: 24px;
+    cursor: pointer;
+    color: gray;
+    transition: color 0.2s;
+}
+
+.star.gold {
+    color: gold;
+}
+#add-to-my-collection-modal,.modal{
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; /* Adjust width as needed */
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    z-index: 1000; 
+      
+}
+
+.follower , .following{
+    align-self: center;
+    width: 76%;
+    text-align: center;
+    margin-left: 12%;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 5%;
+}
+.following button, .follower button{
+    background-color: #215b35;
+    padding: 5px;
+    width: 10%;
+    align-self: center;
+    cursor: pointer;
+    border-radius: 10px;
+    color: wheat;
+    min-height: 35px;
+
+}

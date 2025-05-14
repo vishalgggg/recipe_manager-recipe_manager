@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Recipes</title>
+</head>
+<body>
+    <div id="app">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" id="dashboard-link">Dashboard</a></li>
+                    <li><a href="recipes.html" id="recipes-link">Recipes</a></li>
+                    <li><a href="authors.html" id="Authors-link">Contributers</a></li>
+                    <li><a href="search.html" id="search-link">Search</a></li>
+                    <li><a href="collection.html" id="collection-link">My Favorites</a></li>
+                    <li><a href="myCollection.html" id="myCollection-link">My Collection</a></li>
+                    <li><a href="create-recipe.html" id="create-recipe-link">Create Recipe</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+
+        <div id="add-to-my-collection-modal" style="display: none;">
+            <div id="add-to-my-collection-modal-content"></div>
+            <button id="add-to-my-collection-modal-close-btn">Close</button>
+        </div>
+        <h1>Recipes</h1>
+        <div id="recipes-container"></div>
+    <script src="recipes.js"></script>
+</body>
+</html>

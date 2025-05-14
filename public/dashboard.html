@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="dashboard.html" id="dashboard-link">Dashboard</a></li>
+                    <li><a href="recipes.html" id="recipes-link">Recipes</a></li>
+                    <li><a href="authors.html" id="Authors-link">Contributers</a></li>
+                    <li><a href="search.html" id="search-link">Search</a></li>
+                    <li><a href="collection.html" id="collection-link">My Favorites</a></li>
+                    <li><a href="myCollection.html" id="myCollection-link">My Collection</a></li>
+                    <li><a href="create-recipe.html" id="create-recipe-link">Create Recipe</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <h1>User Dashboard</h1>
+    <div style="text-align: center;">
+    <div id="followers-container">
+        <p><h4>Your Followers</h4> <button type="submit" id="showFollowers">Followers</button></p>
+        <div id="followers-list-container">
+            <ul id="followers-list"></ul>
+        </div>  
+    </div>
+    <div id="following-container">
+        <p><h4>Following</h4> <button type="submit" id="showFollowing">Following</button></p>
+        <div id="following-list-container">
+            <ul id="following-list"></ul>
+        </div>
+    </div>
+    <div id="profile-settings">
+        <h3>Profile Settings</h3>
+        <button id="edit-profile-btn">Edit Profile</button><br><br>
+        <div id="profileForm"></div>
+    </div>
+    </div>
+    <h1>Recent Feed</h1>
+    <div id="newFeed"></div>
+    <script src="dashboard.js"></script>
+</body>
+</html>
