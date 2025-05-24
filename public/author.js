@@ -1,6 +1,6 @@
 const fetchAuthors = async () => {
     try {
-        const response = await fetch('/api/authors');
+        const response = await fetch('http://localhost:4000/api/authors');
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }

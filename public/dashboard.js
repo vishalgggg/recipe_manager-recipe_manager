@@ -2,7 +2,7 @@
 const fetchInvites = async () => {
     const userId = localStorage.getItem('id');
     try {
-        const response = await fetch(`/api/recipes/invites/${userId}`, {
+        const response = await fetch(`http://localhost:4000/api/recipes/invites/${userId}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -43,7 +43,7 @@ const showInviteModal = (invite) => {
 
 const handleInviteResponse = async (inviteId, action) => {
     const userId = localStorage.getItem('id');
-    const response = await fetch(`/api/recipes/invites/${action}`, {
+    const response = await fetch(`http://localhost:4000/api/recipes/invites/${action}`, {
         method: 'POST',
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -68,7 +68,7 @@ const userId = localStorage.getItem('id');
 
 showFollowersBtn.addEventListener('click', async () => {
   try {
-    const response = await fetch(`/api/dashboard/followers/${userId}`);
+    const response = await fetch(`http://localhost:4000/api/dashboard/followers/${userId}`);
     const followers = await response.json();
     followersListContainer.innerHTML = followers.map(follower =>
      `
@@ -81,7 +81,7 @@ showFollowersBtn.addEventListener('click', async () => {
       button.addEventListener('click', async () => {
         const followerId = button.getAttribute('data-id');
         try {
-          const response = await fetch('/api/dashboard/remove-follower', {
+          const response = await fetch('http://localhost:4000/api/dashboard/remove-follower', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ showFollowersBtn.addEventListener('click', async () => {
 
 showFollowingBtn.addEventListener('click', async () => {
   try {
-    const response = await fetch(`/api/dashboard/following/${userId}`);
+    const response = await fetch(`http://localhost:4000/api/dashboard/following/${userId}`);
     const following = await response.json();
     followingListContainer.innerHTML = following.map(author => `
       <div class = "following">
@@ -121,7 +121,7 @@ showFollowingBtn.addEventListener('click', async () => {
       button.addEventListener('click', async () => {
         const authorId = button.getAttribute('data-id');
         try {
-          const response = await fetch(`/api/dashboard/recipes?authorId=${authorId}`);
+          const response = await fetch(`http://localhost:4000/api/dashboard/recipes?authorId=${authorId}`);
           const recipes = await response.json();
           const recipesHtml = recipes.map(recipe => `
             <div class="recipe" data-id="${recipe.id}">
@@ -157,7 +157,7 @@ showFollowingBtn.addEventListener('click', async () => {
       button.addEventListener('click', async () => {
         const authorId = button.getAttribute('data-id');
         try {
-          const response = await fetch(`/api/dashboard/recipes/favorites?authorId=${authorId}`);
+          const response = await fetch(`http://localhost:4000/api/dashboard/recipes/favorites?authorId=${authorId}`);
           const favorites = await response.json();
           //console.log("sasa",favorites);
           const favoritesHtml = favorites.map(favorite => `
@@ -194,7 +194,7 @@ showFollowingBtn.addEventListener('click', async () => {
       button.addEventListener('click', async () => {
         const authorId = button.getAttribute('data-id');
         try {
-          const response = await fetch(`/api/dashboard/my-collections?authorId=${authorId}`);
+          const response = await fetch(`http://localhost:4000/api/dashboard/my-collections?authorId=${authorId}`);
           const collections = await response.json();
           console.log(collections);
           renderMyCollections(collections);
@@ -236,7 +236,7 @@ showFollowingBtn.addEventListener('click', async () => {
               const userId = event.target.getAttribute('data-userId');
               const collectionId = event.target.getAttribute('data-id');
               try {
-                const response = await fetch(`/api/my-collections/${userId}/${groupName}/recipes`);
+                const response = await fetch(`http://localhost:4000/api/my-collections/${userId}/${groupName}/recipes`);
                 if (response.ok) {
                   const recipes = await response.json();
                   console.log(recipes)
@@ -271,7 +271,7 @@ showFollowingBtn.addEventListener('click', async () => {
       button.addEventListener('click', async () => {
         const authorId = button.getAttribute('data-id');
         try {
-          const response = await fetch('/api/dashboard/unfollow', {
+          const response = await fetch('http://localhost:4000/api/dashboard/unfollow', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -299,7 +299,7 @@ showFollowingBtn.addEventListener('click', async () => {
 const profiledetails = async () => {
     const id = localStorage.getItem('id');
     document.getElementById('edit-profile-btn').addEventListener('click', async () => {
-        const response = await fetch(`/api/users/profile/${id}`, {
+        const response = await fetch(`http://localhost:4000/api/users/profile/${id}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -319,7 +319,7 @@ const profiledetails = async () => {
             event.preventDefault();
             const name = document.getElementById("name").value;
             const email = document.getElementById("email").value;
-            const response = await fetch(`/api/users/profile/${id}`,{
+            const response = await fetch(`http://localhost:4000/api/users/profile/${id}`,{
                 method:"PUT",
                 headers:{
                     "Authorization":`Bearer ${localStorage.getItem("token")}`,
@@ -341,7 +341,7 @@ const profiledetails = async () => {
 const newFeed = async () => {
   const id = localStorage.getItem("id");
   try {
-    const response = await fetch(`/api/dashboard/recipes/${id}`, {
+    const response = await fetch(`http://localhost:4000/api/dashboard/recipes/${id}`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,

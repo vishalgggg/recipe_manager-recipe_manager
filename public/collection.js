@@ -1,6 +1,6 @@
 const fetchCollections = async () => {
     try {
-      const response = await fetch(`/api/collections?userId=${localStorage.getItem('id')}`,{
+      const response = await fetch(`http://localhost:4000/api/collections?userId=${localStorage.getItem('id')}`,{
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -12,7 +12,7 @@ const fetchCollections = async () => {
         console.log(data)
         const collections = data.collections.filter((collection, index, self) => self.findIndex(c => c.recipeId === collection.recipeId) === index);
         console.log(collections)
-        const recipes = await fetch('/api/recipes',{
+        const recipes = await fetch('http://localhost:4000/api/recipes',{
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -39,7 +39,7 @@ const fetchCollections = async () => {
         document.querySelectorAll('#unsaveBtn').forEach(button => {
             button.addEventListener('click', async (event) => {
               const recipeId = event.target.getAttribute('data-id');
-              const response = await fetch('/api/collections', {
+              const response = await fetch('http://localhost:4000/api/collections', {
                 method: 'DELETE',
                 headers: {
                   'Authorization': `Bearer ${localStorage.getItem('token')}`,

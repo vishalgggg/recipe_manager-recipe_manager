@@ -26,6 +26,13 @@ Review.init(
         model: 'Users',
         key: 'id',
       },
+    },recipeId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Recipes',
+        key: 'id',
+      },
     },
   },
   {

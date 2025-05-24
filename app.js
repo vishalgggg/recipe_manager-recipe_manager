@@ -18,7 +18,12 @@ const path = require('path');
 require('./models/associations');
 
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: 'http://127.0.0.1:5500', // Use the exact frontend origin
+  credentials: true // Allow cookies/auth headers
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public'), { index: 'signup.html' }));
 
@@ -34,7 +39,7 @@ app.use('/api/dashboard', dashboardRoutes);
 
 
 
-const PORT = process.env.PORT || 5001;
+const PORT = 4000;
 
 //sequelize.sync().then(() => {
 //    app.listen(PORT, () => {
@@ -45,7 +50,7 @@ const PORT = process.env.PORT || 5001;
 
 async function testConnection(){
     try{
-        await sequelize.sync()
+        await sequelize.sync();
         app.listen(PORT)
     }catch(error){
         console.log(error)

@@ -1,7 +1,7 @@
 const fetchRecipes = async () => {
   const token = localStorage.getItem('token');
   console.log(token);
-    const response = await fetch('/api/recipes',{
+    const response = await fetch('http://localhost:4000/api/recipes',{
         method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`
@@ -40,7 +40,7 @@ const fetchRecipes = async () => {
           <ul>
           ${(recipe.Reviews ? recipe.Reviews.filter(review => review.comment !== null && review.comment !== '').map(review => `<li>${review.User && review.User.name ? review.User.name : 'Unknown'}: ${review.comment}</li>`).join('') : '')}
           </ul>
-          <p>${parseInt(currentUser) === parseInt(recipe.userId)?`<button type="submit" id="updateBtn">EDIT</button>` : ""}
+          // <p> ${parseInt(currentUser) === parseInt(recipe.userId)?`<button type="submit" id="updateBtn">EDIT</button>` : ""}
           ${parseInt(currentUser) === parseInt(recipe.userId) ? `<button type="submit" id="deleteBtn" data-id="${recipe.id}">DELETE</button>` : ''}
           ${isSaved ? '' : `<button type="submit" id="saveBtn" data-id="${recipe.id}">Save</button>`}
         </div>
@@ -62,7 +62,7 @@ const fetchRecipes = async () => {
           const recipeId = stars.getAttribute('data-id');
           console.log(`Recipe ID: ${recipeId}, Rating: ${rating} `);
           try {
-            const response = await fetch('/api/reviews', {
+            const response = await fetch('http://localhost:4000/api/reviews', {
               method: 'POST',
               headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -101,7 +101,7 @@ const fetchRecipes = async () => {
         const recipeId = event.target.getAttribute('data-id');
         console.log(`Recipe ID: ${recipeId}`);
         try {
-          const response = await fetch('/api/recipes/like', {
+          const response = await fetch('http://localhost:4000/api/recipes/like', {
             method: 'POST',
             headers: {
               'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -137,7 +137,7 @@ const fetchRecipes = async () => {
           const recipeContainer = button.closest('.recipe');
           const recipeId = recipeContainer.getAttribute('data-id');
           try {
-            const response = await fetch('/api/reviews', {
+            const response = await fetch('http://localhost:4000/api/reviews', {
               method: 'POST',
               headers: {
                 'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -177,7 +177,7 @@ const fetchRecipes = async () => {
     document.querySelectorAll('#deleteBtn').forEach(button => {
         button.addEventListener('click', async (event) => {
             const recipeId = event.target.getAttribute('data-id');
-            const response = await fetch(`/api/recipes/${recipeId}`, {
+            const response = await fetch(`http://localhost:4000/api/recipes/${recipeId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -198,7 +198,7 @@ const fetchRecipes = async () => {
         const authorId = event.target.getAttribute('data-id');
         console.log(`Author ID: ${authorId}`);
         const authorName = event.target.getAttribute('data-name');
-        const response = await fetch('/api/recipes/follow', {
+        const response = await fetch('http://localhost:4000/api/recipes/follow', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -227,7 +227,7 @@ document.querySelectorAll('#saveBtn').forEach(button => {
     const recipeId = event.target.getAttribute('data-id');
     try {
       const userId = localStorage.getItem("id");
-      const response = await fetch('/api/collections', {
+      const response = await fetch('http://localhost:4000/api/collections', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -265,7 +265,7 @@ document.querySelectorAll('.add-to-my-collection-btn').forEach((button) => {
   button.addEventListener('click', async (event) => {
     const recipeId = event.target.getAttribute('data-id');
     try {
-      const response = await fetch('/api/my-collections?userId=' + localStorage.getItem('id'),{
+      const response = await fetch('http://localhost:4000/api/my-collections?userId=' + localStorage.getItem('id'),{
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -295,7 +295,7 @@ document.querySelectorAll('.add-to-my-collection-btn').forEach((button) => {
             const recipeId = event.target.getAttribute('data-recipe-id');
             console.log(`Collection ID: ${collectionId}, Recipe ID: ${recipeId}`);
             try {
-              const response = await fetch('/api/my-collections/add-recipe', {
+              const response = await fetch('http://localhost:4000/api/my-collections/add-recipe', {
                 method: 'POST',
                 headers: {
                   'Authorization': `Bearer ${localStorage.getItem('token')}`,

@@ -7,7 +7,7 @@ const createRecipe = async (event) => {
       alert('Please login to create a recipe');
       return;
     }
-    const response = await fetch('/api/recipes', {
+    const response = await fetch('http://localhost:4000/api/recipes', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,

@@ -7,7 +7,7 @@ document.querySelectorAll('.add-to-my-collection-btn').forEach((button) => {
   button.addEventListener('click', async (event) => {
     const recipeId = event.target.getAttribute('data-id');
     try {
-      const response = await fetch('/api/my-collections?userId=' + localStorage.getItem('id'));
+      const response = await fetch('http://localhost:4000/api/my-collections?userId=' + localStorage.getItem('id'));
       if (response.ok) {
         const myCollections = await response.json();
         addToMyCollectionModalContent.innerHTML = myCollections.map((myCollection) => {
@@ -40,7 +40,7 @@ document.querySelectorAll('#add-to-my-collection-btn').forEach((button) => {
     const collectionId = event.target.getAttribute('data-id');
     const recipeId = event.target.parentNode.getAttribute('data-recipe-id');
     try {
-      const response = await fetch('/api/my-collections/add-recipe', {
+      const response = await fetch('http://localhost:4000/api/my-collections/add-recipe', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

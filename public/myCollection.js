@@ -8,7 +8,7 @@ createMyCollectionForm.addEventListener('submit', async (event) => {
   const collectionGroupName = createMyCollectionInput.value.trim();
   if (collectionGroupName !== '') {
     try {
-      const response = await fetch('/api/my-collections', {
+      const response = await fetch('http://localhost:4000/api/my-collections', {
         method: 'POST',
         headers: {
            'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -46,7 +46,7 @@ const renderMyCollections = (myCollections) => {
           const userId = event.target.getAttribute('data-userId');
           const collectionId = event.target.getAttribute('data-id');
           try {
-            const response = await fetch(`/api/my-collections/${userId}/${groupName}/recipes`);
+            const response = await fetch(`http://localhost:4000/api/my-collections/${userId}/${groupName}/recipes`);
             if (response.ok) {
               const recipes = await response.json();
               console.log(recipes)
@@ -72,7 +72,7 @@ const renderMyCollections = (myCollections) => {
                 if (event.target.classList.contains('remove-from-collection-btn')) {
                   const recipeId = event.target.getAttribute('data-id');
                   try {
-                    const response = await fetch(`/api/my-collections/remove-recipe/${groupName}/${recipeId}`, {
+                    const response = await fetch(`http://localhost:4000/api/my-collections/remove-recipe/${groupName}/${recipeId}`, {
                       method: 'DELETE',
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -108,7 +108,7 @@ const renderMyCollections = (myCollections) => {
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    const response = await fetch('/api/my-collections?userId=' + localStorage.getItem('id'));
+    const response = await fetch('http://localhost:4000/api/my-collections?userId=' + localStorage.getItem('id'));
     if (response.ok) {
       const myCollections = await response.json();
       renderMyCollections(myCollections);

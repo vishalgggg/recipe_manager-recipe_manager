@@ -7,7 +7,7 @@ searchForm.addEventListener('submit', async (event) => {
     const searchQuery = searchInput.value.trim();
     if (searchQuery !== '') {
         try {
-            const response = await fetch(`/api/search?q=${searchQuery}`);
+            const response = await fetch(`http://localhost:4000/api/search?q=${searchQuery}`);
             if (response.ok) {
                 const data = await response.json();
                 renderSearchResults(data);
